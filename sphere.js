@@ -13,9 +13,9 @@ if (window.DeviceMotionEvent != undefined) {
 		document.getElementById("accelerationZ").innerHTML = e.accelerationIncludingGravity.z;
 
 		if ( e.rotationRate ) {
-			document.getElementById("rotationAlpha").innerHTML = e.rotationRate.alpha * 10;
-			document.getElementById("rotationBeta").innerHTML = e.rotationRate.beta * 10;
-			document.getElementById("rotationGamma").innerHTML = e.rotationRate.gamma *10;
+			document.getElementById("rotationAlpha").innerHTML = e.rotationRate.alpha;
+			document.getElementById("rotationBeta").innerHTML = e.rotationRate.beta;
+			document.getElementById("rotationGamma").innerHTML = e.rotationRate.gamma;
 		}		
 	}
 
@@ -38,7 +38,7 @@ if (window.DeviceMotionEvent != undefined) {
 		sphere.style.top = y + "px";
 		sphere.style.left = x + "px";
 		
-	}, 100);
+	}, 50);
 } 
 
 
