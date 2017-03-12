@@ -1,0 +1,62 @@
+<html>
+
+<head>
+<title>Accelerometer and Watson IoT testing</title>
+<meta name="viewport" content="width=device-width,user-scalable=yes" />
+<style>
+body {
+	font-family: helvetica, arial, sans serif;
+}
+#sphere {
+	position: absolute;	
+	width: 50px;
+	height: 50px;
+	border-radius: 50px;
+	-webkit-radius: 50px;
+	background-color: blue;
+}
+</style>
+</head>
+
+<body>
+<div id="content">
+    <h1>Uso de aceler&oacute;metro con Watson IoT</h1>
+    <div id="sphere"></div>
+		<ul>
+			<li>Aceleraci&oacute;n x: <span id="accelerationX"></span>g</li>
+			<li>Aceleraci&oacute;n y: <span id="accelerationY"></span>g</li>
+			<li>Aceleraci&oacute;n z: <span id="accelerationZ"></span>g</li>
+			<li>Rotaci&oacute;n alpha: <span id="rotationAlpha"></span>&deg;</li>
+			<li>Rotaci&oacute;n beta: <span id="rotationBeta"></span>&deg;</li>
+			<li>Rotaci&oacute;n gamma: <span id="rotationGamma"></span>&deg;</li>
+		</ul>
+
+		test: <span id="test"></span>
+	</div>
+	 
+	<script src="sphere.js"></script>
+	<script src="app.js"></script>
+	<script src="libs/mqttws31-min.js"></script>
+
+	<script>
+
+	app.onReady();
+
+    var myPublishInterval = setInterval(myPubMsg, 5000);
+    function myPubMsg() {
+    
+//    app.publish(JSON.stringify({'Hola':'Mundo'}))
+	var rotacionalfa = document.getElementById("rotationAlpha").innerHTML;
+	var rotacionbeta = document.getElementById("rotationBeta").innerHTML;
+	var rotaciongamma = document.getElementById("rotationGamma").innerHTML;
+    var evt = JSON.stringify({rotalfa: rotacionalfa, rotbeta: rotacionbeta, rotgamma:rotaciongamma})
+    console.log("Enviando evento")
+		//send to MQTT publish function
+	app.publish(evt)
+    }
+	
+	</script>
+
+</body>
+
+</html>
