@@ -1,5 +1,5 @@
 <html>
-
+<meta charset="UTF-8">
 <head>
 <title>Accelerometer and Watson IoT testing</title>
 <meta name="viewport" content="width=device-width,user-scalable=yes" />
@@ -13,7 +13,7 @@ body {
 	height: 50px;
 	border-radius: 50px;
 	-webkit-radius: 50px;
-	background-color: blue;
+	background-color: red;
 }
 </style>
 </head>
@@ -21,6 +21,23 @@ body {
 <body>
 <div id="content">
     <h1>Uso de aceler&oacute;metro con Watson IoT</h1>
+    <br>
+     <form>
+  		<label>Org ID <span style="display:inline-block; width: 99;"></span>:
+  			<input type="text" id="organizacion">
+  		</label><br>
+		<label>Device Type <span style="display:inline-block; width: 48;"></span>:
+  			<input type="text" id="tipoDisp">
+  		</label><br>
+		<label>Device ID<span style="display:inline-block; width: 77;"></span>:
+  			<input type="text" id="IdDisp">
+  		</label><br>
+  		<label>Device Passwd<span style="display:inline-block; width: 27;"></span>:
+  			<input type="text" id="passwordDisp">
+  		</label><br>
+        <input id="connectButton" type="button" value="Connect" />  			
+	 </form>
+	<br><br>  
     <div id="sphere"></div>
 		<ul>
 			<li>Aceleraci&oacute;n x: <span id="accelerationX"></span>g</li>
@@ -30,31 +47,56 @@ body {
 			<li>Rotaci&oacute;n beta: <span id="rotationBeta"></span>&deg;</li>
 			<li>Rotaci&oacute;n gamma: <span id="rotationGamma"></span>&deg;</li>
 		</ul>
-
-		test: <span id="test"></span>
 	</div>
+
+    <p hidden id="isConnected">false</p>
 	 
 	<script src="sphere.js"></script>
 	<script src="app.js"></script>
 	<script src="libs/mqttws31-min.js"></script>
 
 	<script>
-
-	app.onReady();
-
-    var myPublishInterval = setInterval(myPubMsg, 2000);
+	var OrgId;
+	var userName = 'use-token-auth';
+	var password;
+	var deviceType;
+	var deviceId;
+	var port = 8883;
+    document.getElementById("connectButton").onclick = function () 
+    { 
+		orgId = document.getElementById("organizacion").value;
+		console.log("Organizacion " + orgId);
+		//var deviceType = 'Mobile'
+		deviceType = document.getElementById("tipoDisp").value;
+		console.log("Tipo Disp " + deviceType);
+		//var deviceId = 'GS7'
+		deviceId = document.getElementById("IdDisp").value;
+		console.log("ID Disp " + deviceId);
+		console.log("username " + userName);
+		//var password = 'ibm4metoo'		
+		password = document.getElementById("passwordDisp").value;
+		console.log("password " + password);
+		//Your device type and device id
+		
+		// Standard port for MQTT is 1883, encrypted 8883
+		
+		if (document.getElementById("isConnected").innerHTML == "false")
+		{
+		    app.onReady();		    
+		    var myPublishInterval = setInterval(myPubMsg, 3000);
+        };    
+	};
     function myPubMsg() {
-    
-//    app.publish(JSON.stringify({'Hola':'Mundo'}))
-	var rotacionalfa = document.getElementById("rotationAlpha").innerHTML;
-	var rotacionbeta = document.getElementById("rotationBeta").innerHTML;
-	var rotaciongamma = document.getElementById("rotationGamma").innerHTML;
-    var evt = JSON.stringify({rotalfa: rotacionalfa, rotbeta: rotacionbeta, rotgamma:rotaciongamma})
-    console.log("Enviando evento")
-		//send to MQTT publish function
-	app.publish(evt)
-    }
-	
+    	if (document.getElementById("isConnected").innerHTML == "true") {
+    		var rotacionalfa = document.getElementById("rotationAlpha").innerHTML;
+			var rotacionbeta = document.getElementById("rotationBeta").innerHTML;
+			var rotaciongamma = document.getElementById("rotationGamma").innerHTML;
+    		var evt = JSON.stringify({rotalfa: rotacionalfa, rotbeta: rotacionbeta, rotgamma:rotaciongamma})
+    		console.log("Enviando evento")
+			//send to MQTT publish function
+			app.publish(evt)
+        };
+    };
 	</script>
 
 </body>

@@ -6,17 +6,25 @@
 var app = {};
 
 // Your Bluemix organization ID
-var orgId = 'xumodm'
+//var orgId = 'xumodm'
+/*
+var orgId = document.getElementById("orgID").innerHTML
+console.log(orgId)
 // The username/password is the API-key and the corresponding authentication token.
 var userName = 'use-token-auth'
-var password = 'ibm4metoo'
-
+//var password = 'ibm4metoo'
+var password = document.getElementById("devicePasswd").innerHTML
+console.log(password)
 //Your device type and device id
-var deviceType = 'Mobile'
-var deviceId = 'GS7'
-
+//var deviceType = 'Mobile'
+var deviceType = document.getElementById("deviceType").innerHTML
+console.log(deviceType)
+//var deviceId = 'GS7'
+var deviceId = document.getElementById("deviceID").innerHTML
+console.log(deviceId)
 // Standard port for MQTT is 1883, encrypted 8883
 var port = 8883
+*/
 
 app.connected = false
 app.ready = false
@@ -40,10 +48,12 @@ console.log("Setting up...")
 	// The hostname has the organisation id as prefix:
 	// '<orgid>.messaging.internetofthings.ibmcloud.com'
 	var hostname = orgId + '.messaging.internetofthings.ibmcloud.com'
+	console.log("hostname = " + hostname)
 	// See https://docs.internetofthings.ibmcloud.com/messaging/applications.html
 	// The clientId is of the form 'a:<orgid>:<appid>'.
 	// <appid> must be unique per client so we add device.uuid to it
 	var clientId = 'd:'+ orgId + ':' + deviceType + ':' + deviceId
+	console.log("client id = " + clientId)
 	app.client = new Paho.MQTT.Client(hostname, port, clientId)
 	app.client.onConnectionLost = app.onConnectionLost
 	app.client.onMessageArrived = app.onMessageArrived
@@ -78,16 +88,20 @@ app.onConnect = function(context) {
 	//app.status("Connected!")
 	app.connected = true
 	console.log("Connected!")
+	document.getElementById("isConnected").innerHTML = "true";
+	sphere.style.backgroundColor = "blue"
 }
 
 app.onConnectFailure = function(e){
     console.log("Failed to connect: " + e)
+    document.getElementById("isConnected").innerHTML = "false"
   }
 
 app.onConnectionLost = function(responseObject) {
 	//app.status("Connection lost!")
 	console.log("Connection lost: "+responseObject.errorMessage)
 	app.connected = false
+	document.getElementById("isConnected").innerHTML = "false"
 }
 
 // called when a message arrives
