@@ -46,9 +46,9 @@ body {
     function myPubMsg() {
     
 //    app.publish(JSON.stringify({'Hola':'Mundo'}))
-	var rotacionalfa = window.ondevicemotion.rotationRate.alpha;
-	var rotacionbeta = window.ondevicemotion.rotationRate.beta;
-	var rotaciongamma = window.ondevicemotion.rotationRate.gamma;
+	var rotacionalfa = document.getElementById("rotationAlpha").innerHTML;
+	var rotacionbeta = document.getElementById("rotationBeta").innerHTML;
+	var rotaciongamma = document.getElementById("rotationGamma").innerHTML;
     var evt = JSON.stringify({rotalfa: rotacionalfa, rotbeta: rotacionbeta, rotgamma:rotaciongamma})
     console.log("Enviando evento")
 		//send to MQTT publish function
