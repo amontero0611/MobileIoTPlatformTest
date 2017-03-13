@@ -39,7 +39,7 @@ if (window.DeviceMotionEvent != undefined) {
 		sphere.style.top = y + "px";
 		sphere.style.left = x + "px";
 		
-	}, 50);
+	}, 20);
 } 
 
 
