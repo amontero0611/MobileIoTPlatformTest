@@ -20,21 +20,49 @@ body {
 
 <body>
 <div id="content">
-    <p>Watson IoT Device</p>
+    <p style="font-size:20px;color:blue;font-family:Geneva">Watson IoT Device Test</p>
      <form>
-  		<label>Org ID <span style="display:inline-block; width: 99;"></span>:
-  			<input type="text" id="organizacion" size=10>
-  		</label><br>
-		<label>Device Type <span style="display:inline-block; width: 48;"></span>:
-  			<input type="text" id="tipoDisp" size=10>
-  		</label><br>
-		<label>Device ID<span style="display:inline-block; width: 77;"></span>:
-  			<input type="text" id="IdDisp" size=10>
-  		</label><br>
-  		<label>Device Passwd<span style="display:inline-block; width: 27;"></span>:
-  			<input type="text" id="passwordDisp" size=10>
-  		</label><br>
-        <input id="connectButton" type="button" value="Connect" />  			
+     	<table>
+     		<tr>
+     			<td>
+  					<p style="font-size:15px;color:grey;font-family:Geneva">Org ID</p>
+  				</td>
+  				<td>	
+  					<input type="text" id="organizacion" size=10>
+  				</td>
+  			</tr>
+     		<tr>
+     			<td>
+  					<p style="font-size:15px;color:grey;font-family:Geneva">Device Type</p>
+  				</td>
+  				<td>	
+  					<input type="text" id="tipoDisp" size=10>
+  				</td>
+  			</tr>
+     		<tr>
+     			<td>
+  					<p style="font-size:15px;color:grey;font-family:Geneva">Device ID</p>
+  				</td>
+  				<td>	
+  					<input type="text" id="IdDisp" size=10>
+  				</td>
+  			</tr>
+     		<tr>
+     			<td>
+  					<p style="font-size:15px;color:grey;font-family:Geneva">Device Passwd</p>
+  				</td>
+  				<td>	
+  					<input type="text" id="passwordDisp" size=10>
+  				</td>
+  			</tr>
+     		<tr>
+     			<td>
+  				</td>
+  				<td>	
+        			<input id="connectButton" type="button" value="Connect" />  
+        		</td>
+  			</tr>
+  		</table>			
 	 </form>
     <div id="sphere"></div>
 		<ul>
