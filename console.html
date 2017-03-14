@@ -42,6 +42,7 @@ function readData() {
       if (xhttp.readyState == 4 && xhttp.status == 200) { 
           document.getElementById("receivedMsg").innerHTML = xhttp.responseText; 
           var obj = JSON.parse(xhttp.responseText);
+          alert(obj);
           document.getElementById("alphaVal").innerHTML = obj.rotalfa;
           document.getElementById("betaVal").innerHTML = obj.rotbeta;
           document.getElementById("gammaVal").innerHTML = obj.rotgamma;
