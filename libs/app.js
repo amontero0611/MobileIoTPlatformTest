@@ -39,6 +39,7 @@ app.onReady = function() {
 		app.pubTopic = 'iot-2/evt/status/fmt/json'
 		app.subTopic = 'iot-2/cmd/action/fmt/json'
 		app.setupConnection()
+		app.subscribe()
 		app.ready = true;
 	}
 }
@@ -110,6 +111,6 @@ app.onConnectionLost = function(responseObject) {
   app.onMessageArrived = function(message) {
   //console.log("onMessageArrived:"+message.payloadString)
   var commandMsg = JSON.parse(message.payload)  
-  alert(commandMsg.command)
+  alert("Recibido" + commandMsg)
   sphere.style.backgroundColor = commandMsg.command
 }
