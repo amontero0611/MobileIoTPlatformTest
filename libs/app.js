@@ -109,6 +109,6 @@ app.onConnectionLost = function(responseObject) {
 // called when a message arrives
   app.onMessageArrived = function(message) {
   //console.log("onMessageArrived:"+message.payloadString)
-  var payload = jQuery.parseJSON(message.payloadString)  
+  var payload = JSON.parse(message.payloadString)  
   sphere.style.backgroundColor = payload.command
 }
