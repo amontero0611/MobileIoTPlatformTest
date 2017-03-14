@@ -39,7 +39,6 @@ app.onReady = function() {
 		app.pubTopic = 'iot-2/evt/status/fmt/json'
 		app.subTopic = 'iot-2/cmd/action/fmt/json'
 		app.setupConnection()
-		app.subscribe()
 		app.ready = true;
 	}
 }

@@ -108,6 +108,7 @@ body {
 		{
 		    app.onReady();		    
 		    var myPublishInterval = setInterval(myPubMsg, 3000);
+		    app.subscribe();
         };    
 	};
     function myPubMsg() {
