@@ -110,5 +110,6 @@ app.onConnectionLost = function(responseObject) {
   app.onMessageArrived = function(message) {
   //console.log("onMessageArrived:"+message.payloadString)
   var commandMsg = JSON.parse(message.payload)  
+  alert(commandMsg.command)
   sphere.style.backgroundColor = commandMsg.command
 }
