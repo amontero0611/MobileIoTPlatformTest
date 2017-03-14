@@ -95,6 +95,7 @@ app.onConnect = function(context) {
 app.onConnectFailure = function(e){
     console.log("Failed to connect: " + e)
     document.getElementById("isConnected").innerHTML = "false"
+    sphere.style.backgroundColor = "red"
   }
 
 app.onConnectionLost = function(responseObject) {
@@ -102,17 +103,12 @@ app.onConnectionLost = function(responseObject) {
 	console.log("Connection lost: "+responseObject.errorMessage)
 	app.connected = false
 	document.getElementById("isConnected").innerHTML = "false"
+	sphere.style.backgroundColor = "red"
 }
 
 // called when a message arrives
-app.onMessageArrived = function(message) {
-  console.log("onMessageArrived:"+message.payloadString)
-  var payload = jQuery.parseJSON(message.payloadString)
-  
-  // Data
-  line1.append(new Date().getTime(), payload.xaxis)
-  line2.append(new Date().getTime(), payload.yaxis)
-  // Add to SmoothieChart
-  smoothie.addTimeSeries(line1)
-  smoothie.addTimeSeries(line2)
+  app.onMessageArrived = function(message) {
+  //console.log("onMessageArrived:"+message.payloadString)
+  var payload = jQuery.parseJSON(message.payloadString)  
+  sphere.style.backgroundColor = payload.command
 }
