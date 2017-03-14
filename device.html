@@ -118,7 +118,7 @@ body {
     		var evt = JSON.stringify({rotalfa: rotacionalfa, rotbeta: rotacionbeta, rotgamma:rotaciongamma})
     		console.log("Enviando evento")
 			//send to MQTT publish function
-			app.publish(evt)
+			app.publish(evt);
         };
     };
 	</script>
