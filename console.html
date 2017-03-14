@@ -42,7 +42,6 @@ function readData() {
       if (xhttp.readyState == 4 && xhttp.status == 200) { 
           document.getElementById("receivedMsg").innerHTML = xhttp.responseText; 
           var obj = JSON.parse(xhttp.responseText);
-          alert(obj);
           document.getElementById("alphaVal").innerHTML = obj.rotalfa;
           document.getElementById("betaVal").innerHTML = obj.rotbeta;
           document.getElementById("gammaVal").innerHTML = obj.rotgamma;
@@ -95,7 +94,7 @@ function myTimer() {
 	</tr>
 	<tr>
 		<td>
-			<p style="font-size:18px;font-family:Geneva;color:#D8D8D8;" id="receivedMsg" align="center"> </p>
+			<p style="font-size:8px;font-family:Geneva;color:#D8D8D8;" id="receivedMsg" align="center"> </p>
 		</td>
 		<td>
 			<p style="font-size:18px;font-family:Geneva;color:#D8D8D8;" id="sentCommand" align="center"> </p>
