@@ -130,9 +130,9 @@ function myTimer() {
 		    	    height: 320
 			    	}
 			  });
-			  var donutUpdate = setInterval(myDonutTimer, 3000);
-			  function myDonutTimer() {
-				    donutChart.load({
+			  var donutAccUpdate = setInterval(myDonutAccTimer, 3000);
+			  function myDonutAccTimer() {
+				    donutChartAcc.load({
         				columns: [
         						["X", document.getElementById("xVal").innerHTML],
         						["Y", document.getElementById("yVal").innerHTML],
@@ -159,9 +159,9 @@ function myTimer() {
 		    	    height: 320
 			    	}
 			  });
-			  var donutUpdate = setInterval(myDonutTimer, 3000);
-			  function myDonutTimer() {
-				    donutChart.load({
+			  var donutRotUpdate = setInterval(myDonutRotTimer, 3000);
+			  function myDonutRotTimer() {
+				    donutChartRot.load({
         				columns: [
         						["alpha", document.getElementById("alphaVal").innerHTML],
         						["beta", document.getElementById("betaVal").innerHTML],
