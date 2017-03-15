@@ -66,9 +66,12 @@ body {
 	 </form>
     <div id="sphere"></div>
 		<ul>
-			<li>Rotaci&oacute;n alpha: <span id="rotationAlpha"></span>&deg;</li>
-			<li>Rotaci&oacute;n beta: <span id="rotationBeta"></span>&deg;</li>
-			<li>Rotaci&oacute;n gamma: <span id="rotationGamma"></span>&deg;</li>
+		    <li style="font-size:11px;font-family:Geneva;color:#D8D8D8;">Acceleration X: <span id="accelerationX"></span></li>
+			<li style="font-size:11px;font-family:Geneva;color:#D8D8D8;">Acceleration Y: <span id="accelerationY"></span></li>
+			<li style="font-size:11px;font-family:Geneva;color:#D8D8D8;">Acceleration Z: <span id="accelerationZ"></span></li>
+			<li style="font-size:11px;font-family:Geneva;color:#D8D8D8;">Rotation alpha: <span id="rotationAlpha"></span>&deg;</li>
+			<li style="font-size:11px;font-family:Geneva;color:#D8D8D8;">Rotation  beta: <span id="rotationBeta"></span>&deg;</li>
+			<li style="font-size:11px;font-family:Geneva;color:#D8D8D8;">Rotation gamma: <span id="rotationGamma"></span>&deg;</li>
 		</ul>
 	</div>
 
@@ -112,10 +115,13 @@ body {
 	};
     function myPubMsg() {
     	if (document.getElementById("isConnected").innerHTML == "true") {
+    		var aceleracionX = document.getElementById("accelerationX").innerHTML;
+    		var aceleracionY = document.getElementById("accelerationY").innerHTML;
+    		var aceleracionZ = document.getElementById("accelerationZ").innerHTML;
     		var rotacionalfa = document.getElementById("rotationAlpha").innerHTML;
 			var rotacionbeta = document.getElementById("rotationBeta").innerHTML;
 			var rotaciongamma = document.getElementById("rotationGamma").innerHTML;
-    		var evt = JSON.stringify({rotalfa: rotacionalfa, rotbeta: rotacionbeta, rotgamma:rotaciongamma})
+    		var evt = JSON.stringify({acelx: aceleracionX, acely: aceleracionY, acelz: aceleracionZ, rotalfa: rotacionalfa, rotbeta: rotacionbeta, rotgamma:rotaciongamma})
     		console.log("Enviando evento")
 			//send to MQTT publish function
 			app.publish(evt);

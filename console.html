@@ -42,6 +42,9 @@ function readData() {
       if (xhttp.readyState == 4 && xhttp.status == 200) { 
           document.getElementById("receivedMsg").innerHTML = xhttp.responseText; 
           var obj = JSON.parse(xhttp.responseText);
+          document.getElementById("xVal").innerHTML = obj.acelx;
+          document.getElementById("yVal").innerHTML = obj.acely;
+          document.getElementById("zVal").innerHTML = obj.acelz;
           document.getElementById("alphaVal").innerHTML = obj.rotalfa;
           document.getElementById("betaVal").innerHTML = obj.rotbeta;
           document.getElementById("gammaVal").innerHTML = obj.rotgamma;
@@ -67,13 +70,17 @@ function myTimer() {
 <h1 style="font-size:32px;color:blue;font-family:Geneva">&nbsp;&nbsp;Watson IoT Device Test Console</h1>
 <br>
   
-<table width="50%" style="table-layout:fixed;">
-        <col style="width:24%">
-        <col style="width:24%">
+<table width="75%" style="table-layout:fixed;">
+        <col style="width:25%">
+        <col style="width:25%">
+        <col style="width:25%">
 <tbody>
 	<tr>
 		<td>
-			<p style="font-size:20px;color:grey;font-family:Geneva" align="center">Sensor data</p>
+			<p style="font-size:20px;color:grey;font-family:Geneva" align="center">Acceleration data</p>
+		</td>
+		<td>
+			<p style="font-size:20px;color:grey;font-family:Geneva" align="center">Rotation data</p>
 		</td>
 		<td>
 			<p style="font-size:20px;color:grey;font-family:Geneva" align="center">Device Commands</p>
@@ -81,7 +88,10 @@ function myTimer() {
 	</tr>
 	<tr>
 		<td>
-			<div id="donutChart"></div>
+			<div id="donutChartAcc"></div>
+		</td>
+		<td>
+			<div id="donutChartRot"></div>
 		</td>
 		<td>
 			<center><img src=green.gif style="cursor: pointer;" border=0 onClick="javascript:(function(){mandato('green');})()">
@@ -103,8 +113,37 @@ function myTimer() {
 </tbody>
 </table>
 <script>
-			  var donutChart = c3.generate({
-    			bindto: "#donutChart",
+			  var donutChartAcc = c3.generate({
+    			bindto: "#donutChartAcc",
+    			data: {
+ 				       columns: [
+				            ["X", 60],
+				            ["Y",50],
+				            ["Z",90]
+				        ],
+			    		type: "donut"
+				    },
+				donut: {
+				    	title: "Acceleration"
+				    },
+				size: {
+		    	    height: 320
+			    	}
+			  });
+			  var donutUpdate = setInterval(myDonutTimer, 3000);
+			  function myDonutTimer() {
+				    donutChart.load({
+        				columns: [
+        						["X", document.getElementById("xVal").innerHTML],
+        						["Y", document.getElementById("yVal").innerHTML],
+        						["Z", document.getElementById("zVal").innerHTML]
+       							 ]
+    				});
+			  }
+</script>
+<script>
+			  var donutChartRot = c3.generate({
+    			bindto: "#donutChartRot",
     			data: {
  				       columns: [
 				            ["alpha", 30],
@@ -148,6 +187,9 @@ function myTimer() {
 
 <br>
 
+<p hidden id="xVal">0</p>
+<p hidden id="yVal">0</p>
+<p hidden id="zVal">0</p>
 <p hidden id="alphaVal">0</p>
 <p hidden id="betaVal">0</p>
 <p hidden id="gammaVal">0</p>
