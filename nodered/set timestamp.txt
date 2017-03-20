@@ -1,0 +1,4 @@
+var now = new Date();
+msg.createdDate = now.valueOf();
+msg.createdShortDate = now.toLocaleDateString();
+return msg;
