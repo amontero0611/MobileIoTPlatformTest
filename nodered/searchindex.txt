@@ -1,0 +1,5 @@
+function(doc){
+  if (doc.createdDate) {
+     index("createdDate", doc.createdDate, {"store": true});
+ }
+}
