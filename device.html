@@ -107,11 +107,11 @@ body {
 		
 		// Standard port for MQTT is 1883, encrypted 8883
 		
-		if (document.getElementById("isConnected").innerHTML == "false")
-		{
+		//if (document.getElementById("isConnected").innerHTML == "false")
+		//{
 		    app.onReady();		    
 		    var myPublishInterval = setInterval(myPubMsg, 3000);
-        };    
+        //};    
 	};
     function myPubMsg() {
     	if (document.getElementById("isConnected").innerHTML == "true") {
