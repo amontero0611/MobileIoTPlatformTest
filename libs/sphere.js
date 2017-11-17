@@ -9,9 +9,9 @@ if (window.DeviceMotionEvent != undefined) {
 		ax = event.accelerationIncludingGravity.x * 5;
 		ay = event.accelerationIncludingGravity.y * 5;
 		
-		document.getElementById("accelerationX").innerHTML = e.accelerationIncludingGravity.x * 100;
-		document.getElementById("accelerationY").innerHTML = e.accelerationIncludingGravity.y * 100;
-		document.getElementById("accelerationZ").innerHTML = e.accelerationIncludingGravity.z * 100;
+		document.getElementById("accelerationX").innerHTML = Math.floor(e.accelerationIncludingGravity.x * 100);
+		document.getElementById("accelerationY").innerHTML = Math.floor(e.accelerationIncludingGravity.y * 100);
+		document.getElementById("accelerationZ").innerHTML = Math.floor(e.accelerationIncludingGravity.z * 100);
 		
 		if ( e.rotationRate ) {
 			document.getElementById("rotationAlpha").innerHTML = e.rotationRate.alpha * 1000;
