@@ -9,16 +9,16 @@ if (window.DeviceMotionEvent != undefined) {
 		ax = event.accelerationIncludingGravity.x * 5;
 		ay = event.accelerationIncludingGravity.y * 5;
 		
-		document.getElementById("accelerationX").innerHTML = e.accelerationIncludingGravity.x;
-		document.getElementById("accelerationY").innerHTML = e.accelerationIncludingGravity.y;
-		document.getElementById("accelerationZ").innerHTML = e.accelerationIncludingGravity.z;
+		document.getElementById("accelerationX").innerHTML = e.accelerationIncludingGravity.x * 100;
+		document.getElementById("accelerationY").innerHTML = e.accelerationIncludingGravity.y * 100;
+		document.getElementById("accelerationZ").innerHTML = e.accelerationIncludingGravity.z * 100;
 		
 		if ( e.rotationRate ) {
-			document.getElementById("rotationAlpha").innerHTML = e.rotationRate.alpha;
-			document.getElementById("rotationBeta").innerHTML = e.rotationRate.beta;
-			document.getElementById("rotationGamma").innerHTML = e.rotationRate.gamma;
+			document.getElementById("rotationAlpha").innerHTML = e.rotationRate.alpha * 1000;
+			document.getElementById("rotationBeta").innerHTML = e.rotationRate.beta * 1000;
+			document.getElementById("rotationGamma").innerHTML = e.rotationRate.gamma * 1000;
 		}		
-	}
+	};
 
 	setInterval( function() {
 		var landscapeOrientation = window.innerWidth/window.innerHeight > 1;
@@ -31,8 +31,8 @@ if (window.DeviceMotionEvent != undefined) {
 		}
 		vx = vx * 0.98;
 		vy = vy * 0.98;
-		y = parseInt(y + vy / 50);
-		x = parseInt(x + vx / 50);
+		y = parseInt(y + vy / 50, 10);
+		x = parseInt(x + vx / 50, 10);
 		
 		boundingBoxCheck();
 		
