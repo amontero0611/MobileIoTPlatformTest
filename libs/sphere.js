@@ -9,14 +9,14 @@ if (window.DeviceMotionEvent != undefined) {
 		ax = event.accelerationIncludingGravity.x * 5;
 		ay = event.accelerationIncludingGravity.y * 5;
 		
-		document.getElementById("accelerationX").innerHTML = Math.floor(e.accelerationIncludingGravity.x * 100);
-		document.getElementById("accelerationY").innerHTML = Math.floor(e.accelerationIncludingGravity.y * 100);
-		document.getElementById("accelerationZ").innerHTML = Math.floor(e.accelerationIncludingGravity.z * 100);
+		document.getElementById("accelerationX").innerHTML = parseInt(e.accelerationIncludingGravity.x * 100, 10);
+		document.getElementById("accelerationY").innerHTML = parseInt(e.accelerationIncludingGravity.y * 100, 10);
+		document.getElementById("accelerationZ").innerHTML = parseInt(e.accelerationIncludingGravity.z * 100, 10);
 		
 		if ( e.rotationRate ) {
-			document.getElementById("rotationAlpha").innerHTML = Math.floor(e.rotationRate.alpha * 10000);
-			document.getElementById("rotationBeta").innerHTML = Math.floor(e.rotationRate.beta * 10000);
-			document.getElementById("rotationGamma").innerHTML = Math.floor(e.rotationRate.gamma * 10000);
+			document.getElementById("rotationAlpha").innerHTML = parseInt(e.rotationRate.alpha * 10000, 10);
+			document.getElementById("rotationBeta").innerHTML = parseInt(e.rotationRate.beta * 10000, 10);
+			document.getElementById("rotationGamma").innerHTML = parseInt(e.rotationRate.gamma * 10000, 10);
 		}		
 	};
 
