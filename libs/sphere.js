@@ -4,7 +4,8 @@ var x = 0, y = 0,
 	
 var sphere = document.getElementById("sphere");
 
-var accX, accY, accZ, rotX, rotY, rotZ;
+var accX, accY, accZ;
+// rotX, rotY, rotZ;
 
 if (window.DeviceMotionEvent != undefined) {
 	window.ondevicemotion = function(e) {
@@ -14,21 +15,21 @@ if (window.DeviceMotionEvent != undefined) {
 		accX = parseInt(e.accelerationIncludingGravity.x * 100, 10);
 		accY = parseInt(e.accelerationIncludingGravity.y * 100, 10);
 		accZ = parseInt(e.accelerationIncludingGravity.z * 100, 10);
-		if ( e.rotationRate ) {
-			rotX = parseInt(e.rotationRate.alpha * 100, 10);
-			rotY = parseInt(e.rotationRate.beta * 100, 10);
-			rotZ = parseInt(e.rotationRate.gamma * 100, 10);
-		}
+	//	if ( e.rotationRate ) {
+	//		rotX = parseInt(e.rotationRate.alpha * 100, 10);
+	//		rotY = parseInt(e.rotationRate.beta * 100, 10);
+	//		rotZ = parseInt(e.rotationRate.gamma * 100, 10);
+	//	}
 		
 		document.getElementById("accelerationX").innerHTML = accX;
 		document.getElementById("accelerationY").innerHTML = accY;
 		document.getElementById("accelerationZ").innerHTML = accZ;
 		
-		if ( e.rotationRate ) {
-			document.getElementById("rotationAlpha").innerHTML = rotX;
-			document.getElementById("rotationBeta").innerHTML = rotY;
-			document.getElementById("rotationGamma").innerHTML = rotZ;
-		}		
+	//	if ( e.rotationRate ) {
+	//		document.getElementById("rotationAlpha").innerHTML = rotX;
+	//		document.getElementById("rotationBeta").innerHTML = rotY;
+	//		document.getElementById("rotationGamma").innerHTML = rotZ;
+	//	}		
 	};
 
 	setInterval( function() {
