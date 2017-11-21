@@ -87,13 +87,14 @@ body {
 	<script>
 	
 	var userName = 'use-token-auth';
+	var orgId;
 	var password;
 	var deviceType;
 	var deviceId;
 	var port = 8883;
     document.getElementById("connectButton").onclick = function () 
     { 
-		var orgId = document.getElementById("organizacion").value;
+		orgId = document.getElementById("organizacion").value;
 		console.log("Organizacion " + orgId);
 		//var deviceType = 'Mobile'
 		deviceType = document.getElementById("tipoDisp").value;
