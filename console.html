@@ -43,9 +43,10 @@ function readData() {
       if (xhttp.readyState == 4 && xhttp.status == 200) { 
           document.getElementById("receivedMsg").innerHTML = xhttp.responseText; 
           var obj = JSON.parse(xhttp.responseText);
-          document.getElementById("xVal").innerHTML = obj.acelx;
-          document.getElementById("yVal").innerHTML = obj.acely;
-          document.getElementById("zVal").innerHTML = obj.acelz;
+          var hundredPercent = obj.acelx + obj.acely + obj.acelz;
+          document.getElementById("xVal").innerHTML = obj.acelx * 100 / hundredPercent;
+          document.getElementById("yVal").innerHTML = obj.acely * 100 / hundredPercent;
+          document.getElementById("zVal").innerHTML = obj.acelz * 100 / hundredPercent;
           //document.getElementById("alphaVal").innerHTML = obj.rotalfa;
           //document.getElementById("betaVal").innerHTML = obj.rotbeta;
           //document.getElementById("gammaVal").innerHTML = obj.rotgamma;
@@ -97,11 +98,11 @@ function myTimer() {
 		</td>
 	-->	
 		<td>
-			<center><img src=green.gif style="cursor: pointer;" border=0 onClick=function(){mandato('green');}>
+			<center><img src=green.gif style="cursor: pointer;" border=0 onClick="javascript:(function(){mandato('green');})()">
 			</center><br>
-			<center><img src=magenta.gif style="cursor: pointer;" border=0 usemap="#map_s2"onClick=function(){mandato('magenta');}>
+			<center><img src=magenta.gif style="cursor: pointer;" border=0 usemap="#map_s2" onClick="javascript:(function(){mandato('magenta');})()">
 			</center><br>
-			<center><img src=yellow.gif style="cursor: pointer;" border=0 usemap="#map_s3"onClick=function(){mandato('yellow');}>
+			<center><img src=yellow.gif style="cursor: pointer;" border=0 usemap="#map_s3" onClick="javascript:(function(){mandato('yellow');})()">
 			</center>
 		</td>
 	</tr>
