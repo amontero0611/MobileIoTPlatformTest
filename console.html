@@ -13,6 +13,7 @@
 
 <!--function DoOnLoad() {  }  //-->
 var nodeRedURL;
+var newData = false;
   
 function mandato(comando) {
 	
@@ -45,9 +46,10 @@ function readData() {
           document.getElementById("xVal").innerHTML = obj.acelx;
           document.getElementById("yVal").innerHTML = obj.acely;
           document.getElementById("zVal").innerHTML = obj.acelz;
-          document.getElementById("alphaVal").innerHTML = obj.rotalfa;
-          document.getElementById("betaVal").innerHTML = obj.rotbeta;
-          document.getElementById("gammaVal").innerHTML = obj.rotgamma;
+          //document.getElementById("alphaVal").innerHTML = obj.rotalfa;
+          //document.getElementById("betaVal").innerHTML = obj.rotbeta;
+          //document.getElementById("gammaVal").innerHTML = obj.rotgamma;
+          newData = true;
       }
     };
     
@@ -135,13 +137,15 @@ function myTimer() {
 			  });
 			  var donutAccUpdate = setInterval(myDonutAccTimer, 3000);
 			  function myDonutAccTimer() {
-				    donutChartAcc.load({
-        				columns: [
+			  	    if (newData) {
+				    	donutChartAcc.load({
+        					columns: [
         						["X", document.getElementById("xVal").innerHTML],
         						["Y", document.getElementById("yVal").innerHTML],
         						["Z", document.getElementById("zVal").innerHTML]
        							 ]
-    				});
+    					});
+					}
 			  }
 </script>
 <!-- <script>
