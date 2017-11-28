@@ -43,10 +43,13 @@ function readData() {
       if (xhttp.readyState == 4 && xhttp.status == 200) { 
           document.getElementById("receivedMsg").innerHTML = xhttp.responseText; 
           var obj = JSON.parse(xhttp.responseText);
-          var hundredPercent = obj.acelx + obj.acely + obj.acelz;
-          document.getElementById("xVal").innerHTML = obj.acelx * 100 / hundredPercent;
-          document.getElementById("yVal").innerHTML = obj.acely * 100 / hundredPercent;
-          document.getElementById("zVal").innerHTML = obj.acelz * 100 / hundredPercent;
+          var absAcelx = Math.abs(obj.acelx);
+          var absAcely = Math.abs(obj.acely);
+          var absAcelz = Math.abs(obj.acelz);
+          var hundredPercent = absAcelx + absAcely + absAcelz;
+          document.getElementById("xVal").innerHTML = absAcelx * 100 / hundredPercent;
+          document.getElementById("yVal").innerHTML = absAcely * 100 / hundredPercent;
+          document.getElementById("zVal").innerHTML = absAcelz * 100 / hundredPercent;
           //document.getElementById("alphaVal").innerHTML = obj.rotalfa;
           //document.getElementById("betaVal").innerHTML = obj.rotbeta;
           //document.getElementById("gammaVal").innerHTML = obj.rotgamma;
